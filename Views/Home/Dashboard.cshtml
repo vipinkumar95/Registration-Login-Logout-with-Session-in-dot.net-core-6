@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h1>Dashboard</h1>
+<h2 style="color:green">@TempData["message"]</h2>
+<h3>@ViewBag.mysession</h3>
+
+
+
+<a asp-controller="Home" asp-action="Logout">Logout</a>
