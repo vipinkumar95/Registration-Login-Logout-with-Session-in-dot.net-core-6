@@ -7,6 +7,14 @@ namespace Loginwithsession.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        public string Name { get; set; }
+        [Required]
+        public string Age { get; set; }
+
+        [Required]
+        public string Address { get; set; }
+
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]

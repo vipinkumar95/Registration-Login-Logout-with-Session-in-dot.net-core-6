@@ -23,7 +23,7 @@ namespace Loginwithsession.Controllers
         [HttpPost]
         public IActionResult Index(Login l)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid != null) 
             {
                 var data = db.Logins.Where(x => x.Email == l.Email && x.Password == l.Password).FirstOrDefault();
                 if (data != null)
@@ -54,12 +54,36 @@ namespace Loginwithsession.Controllers
         }
 
 
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(Login p)
+        {
+            if(ModelState.IsValid)
+            {
+              await  db.Logins.AddAsync(p);
+              await db.SaveChangesAsync();
+              TempData["message"] = "Registration Successfully";
+                return RedirectToAction("Index");
+            }else
+            {
+                ViewBag.message = "Something went wrong";
+            }
+
+            return View();
+        }
+
+
         public IActionResult Logout()
         {
             if (HttpContext.Session.GetString("UserSession") != null);
             {
                 HttpContext.Session.Remove("UserSession");
                 return RedirectToAction("Index");
+                
             }
             
         }
