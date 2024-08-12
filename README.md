@@ -1,1 +1,1 @@
-# Login Logout with Session Core 6 
+# Registration Login Logout with Session Core 6 
